@@ -112,10 +112,17 @@ class Template(object):
 
             if file_path is not None:
                 print('    {}'.format(file_path))
+        
+        def is_camel_case(self, s):
+            return s != s.lower() and s != s.upper() and "_" not in s
 
         def create_file_name(self, class_name):
-            upper_case_letters = re.findall('[A-Z][^A-Z]*', class_name)
-            return '_'.join(upper_case_letters).lower()
+            if self.is_camel_case(class_name):
+                upper_case_letters = re.findall('[A-Z][^A-Z]*', class_name)
+                return '_'.join(upper_case_letters).lower()
+            else:
+                print('Invalid filename. Filename need to be camel string.\nFor example: MyCamelCase')
+                exit(1)
 
         def _content_from_template(self, template):
             return template.render(

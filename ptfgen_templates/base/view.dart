@@ -19,7 +19,7 @@ class _{{ name }}ViewState extends State<{{ name }}View> with DisposeBagMixin, B
 
   /// Subjects
   
-  PublishSubject<void> loadTrigger = PublishSubject<void>();
+  var loadTrigger = PublishSubject<void>();
 
   /// Life Cycle
 
